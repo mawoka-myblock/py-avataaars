@@ -1,23 +1,29 @@
 # py-avataaars - Python component for Avataaars
 
-[![build-status-image]][travis]
-[![pypi-version]][pypi]
+**FORK OF https://github.com/kebu/py-avataaars**
+
+
+## Changes
+- Switched from setup.py to Poetry
+- Removed svg2png-dependency -> **No PNG-support**
+
+## Original README
 
 Python port of https://github.com/fangpenlin/avataaars
 
 > The core React component for [Avataaars Generator](https://getavataaars.com/) developed by [Fang-Pen Lin](https://twitter.com/fangpenlin), based on the Sketch library [Avataaars](https://avataaars.com/) designed by [Pablo Stanley](https://twitter.com/pablostanley). 
 
-## Features
+### Features
 * SVG based
 * Light weight
 * Easy to use
 
-## Install
+### Install
 ```shell script
 pip install py-avataaars
 ```
 
-## Usage
+### Usage
 
 Basic usage:
 
@@ -25,7 +31,7 @@ Basic usage:
 from py_avataaars import PyAvataaar
 
 avatar = PyAvataaar()
-avatar.render_png_file('<output_file.png>')
+avatar_svg = avatar.render_svg()
 ```
 
 Specify each part of avatar:
@@ -48,10 +54,5 @@ avatar = pa.PyAvataaar(
     clothe_color=pa.Color.HEATHER,
     clothe_graphic_type=pa.ClotheGraphicType.BAT,
 )
-avatar.render_png_file('<output_file.png>')
+avatar_svg = avatar.render_svg()
 ```
-
-[build-status-image]: https://secure.travis-ci.org/kebu/py-avataaars.svg?branch=master
-[travis]: https://travis-ci.org/kebu/py-avataaars?branch=master
-[pypi-version]: https://img.shields.io/pypi/v/py-avataaars.svg
-[pypi]: https://pypi.org/project/py-avataaars/

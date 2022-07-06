@@ -5,7 +5,6 @@ import uuid
 from collections import Counter
 from io import BytesIO
 
-from cairosvg import svg2png
 from jinja2 import Environment, PackageLoader
 from jinja2.ext import Extension
 from jinja2.lexer import Token
@@ -283,17 +282,20 @@ class PyAvataaar(object):
 
     @staticmethod
     def __template_name(context):
-        template_name = getattr(context, '_TemplateReference__context', None) if context else None
+        template_name = getattr(
+            context, '_TemplateReference__context', None) if context else None
         if template_name:
             name = template_name.name
         else:
             name = str(uuid.uuid4())
-        name = name.replace('.svg', '').replace('/', '-').replace('\\', '-').replace('_', '-')
+        name = name.replace('.svg', '').replace(
+            '/', '-').replace('\\', '-').replace('_', '-')
         return f'{PyAvataaar.PREFIX}-{name}'
 
     def __simplify_ids(self, rendered_template):
         id_list = re.findall(r'id="([a-zA-Z0-9-]+)"', rendered_template)
-        id_list_multi = {key: value for key, value in Counter(id_list).items() if value > 1}
+        id_list_multi = {key: value for key,
+                         value in Counter(id_list).items() if value > 1}
         if id_list_multi:
             print(f'WARNING: file contains multiple same ids: {id_list_multi}')
         for idx, key in enumerate(sorted(id_list, reverse=True)):
@@ -335,20 +337,12 @@ class PyAvataaar(object):
             return self.__simplify_ids(rendered_template)
         return rendered_template
 
-    def render_png_file(self, output_file: str):
-        svg2png(self.__render_svg(), write_to=output_file)
-
     def render_svg_file(self, output_file: str):
         with open(output_file, 'w') as file:
             file.write(self.__render_svg())
 
     def render_svg(self):
         return self.__render_svg()
-
-    def render_png(self):
-        output_file = BytesIO()
-        svg2png(self.__render_svg(), write_to=output_file)
-        return output_file.getvalue()
 
     @property
     def unique_id(self) -> str:
@@ -361,6 +355,8 @@ class PyAvataaar(object):
 
         value_parts = [value[i:i + 2] for i in range(0, len(value), 2)]
         for idx, (key, param_value) in enumerate(
-                {x: y for x, y in sorted(vars(self).items()) if isinstance(y, AvatarEnum)}.items()
+                {x: y for x, y in sorted(vars(self).items()) if isinstance(
+                    y, AvatarEnum)}.items()
         ):
-            setattr(self, key, param_value.__class__(int(value_parts[idx], 16)))
+            setattr(self, key, param_value.__class__(
+                int(value_parts[idx], 16)))
