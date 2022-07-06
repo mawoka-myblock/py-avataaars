@@ -1,21 +1,21 @@
 [tool.poetry]
-name = "py-avataaars"
+name = "py-avataaars-no-png"
 version = "0.1.0"
-description = ""
+description = "SVG-Avatar generator library"
+repository = "https://github.com/mawoka-myblock/py-avataaars"
 license = "MIT"
 keywords = [
     'Python',
     'Avatar',
     'Avataaars',
     'SVG',
-    'PNG',
     'Generator',
     'Library',
     'Graphic',
     'Face',
     'Vector',
 ]
-authors = ["Your Name <you@example.com>"]
+authors = ["Mawoka <mawoka@mawoka.eu>"]
 classifiers = [
     'Development Status :: 5 - Production/Stable',
     'Intended Audience :: Developers',
