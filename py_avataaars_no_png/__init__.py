@@ -304,7 +304,7 @@ class PyAvataaar(object):
 
     def __render_svg(self):
         env = Environment(
-            loader=PackageLoader('py_avataaars', 'templates'),
+            loader=PackageLoader('py_avataaars_no_png', 'templates'),
             trim_blocks=True,
             lstrip_blocks=True,
             autoescape=True,
