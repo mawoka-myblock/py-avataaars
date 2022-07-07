@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "py-avataaars-no-png"
-version = "1.0.0"
+version = "1.0.1"
 description = "SVG-Avatar generator library"
 repository = "https://github.com/mawoka-myblock/py-avataaars"
 readme = "README.md"
